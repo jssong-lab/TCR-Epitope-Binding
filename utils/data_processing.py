@@ -7,8 +7,6 @@ import pickle as pk
 import math
 import glob
 
-from utils.set_env import set_env, get_aa_vec, make_paths
-
 NCH = 6
 PAD_LENGTH = 20
 EP_PAD_LENGTH = 10
@@ -160,9 +158,6 @@ def make_data_dict_neg(split_dict, aa_vec, tcr_pad_len, ep_pad_len, from_archive
         #data_dict['y_hot_{}'.format(set_type)] = keras.utils.to_categorical(data_dict['y_cls_{}'.format(set_type)], len(data_dict['vc_train']))
     
     return data_dict
-
-aa_vec = get_aa_vec()
-aa_letters = list(aa_vec.keys())[:-1]
 
 def proper_tcr(s):
     if type(s) == str:
