@@ -369,11 +369,13 @@ def train(model_dict, data_dict, epochs, batch_size=BATCH_SIZE, period=10, choic
                 plt.savefig(name)
             else:
                 plt.savefig('test.png')
-            plt.close()
-            if auto_stop_n:
-                if len(loss_track_val) > 2*auto_stop_n:
-                    immediate = np.mean(loss_track_val[-auto_stop_n:])
-                    past = np.mean(loss_track_val[-2*auto_stop_n:-auto_stop_n])
-                    if immediate >= past:
-                        break
+            plt.close()    
+    pickle.dump(model_dict,open('trained_network.pkl','wb'))
+    return model_dict
+#             if auto_stop_n:
+#                 if len(loss_track_val) > 2*auto_stop_n:
+#                     immediate = np.mean(loss_track_val[-auto_stop_n:])
+#                     past = np.mean(loss_track_val[-2*auto_stop_n:-auto_stop_n])
+#                     if immediate >= past:
+#                         break
                         
